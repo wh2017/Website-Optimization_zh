@@ -30,14 +30,14 @@
 
 ### 优化
 
-####Part 1: 优化 index.html 的 PageSpeed Insights 得分
+#### Part 1: 优化 index.html 的 PageSpeed Insights 得分
 
 * 用 `<link>` 载入外部的资源，需要网络请求，每一次网络请求都会花费不少的时间，会延缓了网页的首次渲染，载入 `style.css` 也会阻止首次渲染,所以把篇幅较短的外部样式修改为内部样式
 * `print.css` 资源是用于打印的（而不是屏幕设备），因此可以通过添加媒体查询的方式来避免其阻塞首次渲染
 * 由于脚本的同步载入和执行会阻止 DOM 的构建，所以也会延缓网页的首次渲染。可以添加一个 async 属性来避免这个问题
 * 图片的文件过大，会需要不少时间来载入，所以通过在线工具：[compressjpeg](http://compressjpeg.com/)来压缩图片，根据图片样式设定的宽高，使用在线应用[reduce images](https://www.reduceimages.com)将图片的宽度缩放,也可使用专业的图形处理软件例如 [Photoshop](https://www.adobe.com/cn/downloads.html?promoid=RL89NGY7&mv=other) 等
 
-####Part 2: 优化 pizza.html 的 FPS（每秒帧数）
+#### Part 2: 优化 pizza.html 的 FPS（每秒帧数）
 
 * `querySelector*` 类的方法效率较低，尤其当需要获取大量的网页元素时， 使用 getElementsByClassName、getElementById来获取元素 
 * 获取背景网页元素`document.getElementsByClassName("randomPizzaContainer")`以及 `.scrollTop` 移到循环外部，避免布局抖动(强制同步布局)
