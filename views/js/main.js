@@ -534,9 +534,14 @@ window.addEventListener('scroll', updatePositions);
 // 当页面加载时生成披萨滑窗
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
-  // var count = parseInt(document.body.clientHeight / 325 * 3);
+  // 通过 window.innerHeight 获取 viewport 的高度，
+  // 除以 mover 以及其上下间隔的高度 256，得到需要多少行 pizza
+  var rows = window.innerHeight / 256;
+
+  // 行乘以列计算出总数
+  var pizzaNum = rows * cols // 行乘以列计算出总数
   var s = 256;
-  for (var i = 0; i < 50; i++) {
+  for (var i = 0; i < pizzaNum; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza-min.png";
